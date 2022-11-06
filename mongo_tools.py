@@ -141,6 +141,7 @@ class MongoConnect:
 
 
 if __name__ == '__main__':
+    # 需要输入一个项目目录
     project_path = sys.argv[1]
     url_file = f"{project_path}/boot/mongo.opts"
     backup_path = f"{project_path}/_mongodump"
