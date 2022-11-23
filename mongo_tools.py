@@ -152,11 +152,18 @@ if __name__ == '__main__':
     print(r'2. restore database')
     operate = input('input:')
     if operate == '0':
-        con = MongoConnect(url.uri)
-        con.drop_database()
-        con.close()
-        print("drop database success!")
+        code = input("确认删除数据库吗！y|n")
+        if code.lower() == 'y':
+            print("yes,drop database start!")
+            con = MongoConnect(url.uri)
+            con.drop_database()
+            con.close()
+            print("drop database success!")
+        else:
+            print("no,drop database terminate!")
     elif operate == '1':
         dump(url.uri, backup_path)
     elif operate == '2':
         restore(url.primary_ip, backup_path, url.user, url.pwd, url.dbname)
+    else:
+        print("你没有选择任何操作项，结束操作！")
